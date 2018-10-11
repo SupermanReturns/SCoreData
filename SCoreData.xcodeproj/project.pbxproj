@@ -16,6 +16,8 @@
 		CF2EAFA0216F41A400232AB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF9F216F41A400232AB6 /* main.m */; };
 		CF2EAFAA216F41A400232AB6 /* SCoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAFA9216F41A400232AB6 /* SCoreDataTests.m */; };
 		CF2EAFB5216F41A400232AB6 /* SCoreDataUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAFB4216F41A400232AB6 /* SCoreDataUITests.m */; };
+		CF2EAFC8216F489600232AB6 /* SManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAFC7216F489600232AB6 /* SManagedObject.m */; };
+		CF2EAFCD216F519D00232AB6 /* SCoredata.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAFCC216F519D00232AB6 /* SCoredata.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,11 @@
 		CF2EAFB0216F41A400232AB6 /* SCoreDataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCoreDataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2EAFB4216F41A400232AB6 /* SCoreDataUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCoreDataUITests.m; sourceTree = "<group>"; };
 		CF2EAFB6216F41A400232AB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF2EAFC6216F489600232AB6 /* SManagedObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SManagedObject.h; sourceTree = "<group>"; };
+		CF2EAFC7216F489600232AB6 /* SManagedObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SManagedObject.m; sourceTree = "<group>"; };
+		CF2EAFCA216F507200232AB6 /* OperationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperationProtocol.h; sourceTree = "<group>"; };
+		CF2EAFCB216F519D00232AB6 /* SCoredata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCoredata.h; sourceTree = "<group>"; };
+		CF2EAFCC216F519D00232AB6 /* SCoredata.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCoredata.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +110,7 @@
 		CF2EAF8C216F41A200232AB6 /* SCoreData */ = {
 			isa = PBXGroup;
 			children = (
+				CF2EAFC9216F48A400232AB6 /* Data */,
 				CF2EAF8D216F41A200232AB6 /* AppDelegate.h */,
 				CF2EAF8E216F41A200232AB6 /* AppDelegate.m */,
 				CF2EAF90216F41A200232AB6 /* ViewController.h */,
@@ -112,6 +120,7 @@
 				CF2EAF9B216F41A400232AB6 /* LaunchScreen.storyboard */,
 				CF2EAF9E216F41A400232AB6 /* Info.plist */,
 				CF2EAF9F216F41A400232AB6 /* main.m */,
+				CF2EAFC5216F481600232AB6 /* model */,
 				CF2EAF96216F41A200232AB6 /* SCoreData.xcdatamodeld */,
 			);
 			path = SCoreData;
@@ -133,6 +142,25 @@
 				CF2EAFB6216F41A400232AB6 /* Info.plist */,
 			);
 			path = SCoreDataUITests;
+			sourceTree = "<group>";
+		};
+		CF2EAFC5216F481600232AB6 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		CF2EAFC9216F48A400232AB6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CF2EAFCB216F519D00232AB6 /* SCoredata.h */,
+				CF2EAFCC216F519D00232AB6 /* SCoredata.m */,
+				CF2EAFC6216F489600232AB6 /* SManagedObject.h */,
+				CF2EAFC7216F489600232AB6 /* SManagedObject.m */,
+				CF2EAFCA216F507200232AB6 /* OperationProtocol.h */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF2EAFCD216F519D00232AB6 /* SCoredata.m in Sources */,
 				CF2EAF92216F41A200232AB6 /* ViewController.m in Sources */,
 				CF2EAF8F216F41A200232AB6 /* AppDelegate.m in Sources */,
 				CF2EAFA0216F41A400232AB6 /* main.m in Sources */,
+				CF2EAFC8216F489600232AB6 /* SManagedObject.m in Sources */,
 				CF2EAF98216F41A200232AB6 /* SCoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +468,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 78S8WECG83;
 				INFOPLIST_FILE = SCoreData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -445,7 +476,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ffd.SCoreData;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -454,6 +485,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 78S8WECG83;
 				INFOPLIST_FILE = SCoreData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -461,7 +493,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ffd.SCoreData;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
