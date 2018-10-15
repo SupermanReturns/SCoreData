@@ -39,7 +39,36 @@
 }
 -(void)coreDataInitialize{
     NSPersistentStoreCoordinator *coordinator  =[self persistentStoreCoordinator];
-    
+    if (coordinator) {
+        _backgroundManagedObjectContext = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [_backgroundManagedObjectContext setPersistentStoreCoordinator:[self persistentStoreCoordinator]];
+        _mainManagedObjectContext = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSMainQueueConcurrencyType];
+        _mainManagedObjectContext.parentContext = _backgroundManagedObjectContext;
+    }
+}
+- (NSManagedObjectContext *)createPrivateManagedObjectContext{
+    NSManagedObjectContext *privateContext = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    privateContext.parentContext = _mainManagedObjectContext;
+    return privateContext;
+}
+- (NSError *)save:(OperationResult)handler{
+    NSError *error;
+    if ([_mainManagedObjectContext hasChanges]) {
+        [_mainManagedObjectContext save:&error];
+        [_backgroundManagedObjectContext performBlock:^{
+            __block NSError *inner_error = nil;
+            [_backgroundManagedObjectContext save:&inner_error];
+            if (handler) {
+                [_mainManagedObjectContext performBlock:^{
+                    handler(inner_error);
+                }];
+            }
+        }];
+    }
+    return error;
+}
+- (NSURL *)applicationDocumentsDirectory {
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 @end
