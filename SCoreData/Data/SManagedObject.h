@@ -7,7 +7,8 @@
 //
 
 #import <CoreData/CoreData.h>
+#import "OperationProtocol.h"
 
-@interface SManagedObject : NSManagedObject
+@interface SManagedObject : NSManagedObject<OperationProtocol>
 
 @end
